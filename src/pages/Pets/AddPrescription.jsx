@@ -1,7 +1,6 @@
 import Button from "../../common/Buttons/Button";
 import PropTypes from "prop-types";
 import Text from "../../common/Text/Text";
-import { addPrescription } from "../../api/Prescriptions";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -16,8 +15,6 @@ const AddPrescription = ({ onClose }) => {
       setError("Please fill in all fields");
       return;
     }
-
-    addPrescription({ medicineName, dosage, frequency });
 
     onClose();
   };

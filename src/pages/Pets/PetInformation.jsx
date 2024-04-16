@@ -34,7 +34,7 @@ const PetInformation = () => {
     <div>
       <Text level={2}>Pet Information</Text>
       <Button onClick={handleModalOpen}>Add Prescription</Button>
-      {/* <Button onClick={handleModalOpen}>Add Log</Button> */}
+
       {petData && (
         <Cards>
           <Text level={3}>Name: {petData.name}</Text>
@@ -42,14 +42,7 @@ const PetInformation = () => {
           <Text level={3}>Email: {petData.email}</Text>
         </Cards>
       )}
-      {/* {petData.medications.map((petData, index) => (
-        <div key={index}>
-          <Cards>
-            <Text level={2}>Dosage: {petData.dosage}</Text>
-            <Text level={2}>Frequency: {petData.frequency}</Text>
-          </Cards>
-        </div>
-      ))} */}
+
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <AddPrescription onClose={handleModalClose} />
       </Modal>
