@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import Button from "../../common/Buttons/Button";
 import Cards from "../../components/Cards/Cards";
+import { Link } from "react-router-dom";
 import Modal from "../../components/ModalWindow/Modal";
 import NewPet from "../../pages/Pets/NewPet";
 import Text from "../../common/Text/Text";
@@ -50,9 +51,12 @@ const Pets = () => {
               <Text level={3}>{pet.name}</Text>
               <Text level={3}>{pet.birthDate}</Text>
               <Text level={3}>{pet.email}</Text>
-              <Button $danger onClick={() => handleDelete(pet.id)}>
-                Delete
-              </Button>
+              <SyledButtonsContainer>
+                <Link to={`/pets/${pet.id}`}>
+                  <Button $danger>VIEW LOG</Button>
+                </Link>
+                <Button onClick={() => handleDelete(pet.id)}>DELETE</Button>
+              </SyledButtonsContainer>
             </StyledCard>
           ))
         ) : (
@@ -65,6 +69,11 @@ const Pets = () => {
     </div>
   );
 };
+
+const SyledButtonsContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 
 const StyledHeader = styled.div`
   display: flex;

@@ -1,3 +1,4 @@
+import { deleteMedication, getMedications } from "../../api/Medications";
 import { useEffect, useState } from "react";
 
 import Button from "../../common/Buttons/Button";
@@ -5,7 +6,6 @@ import Cards from "../../components/Cards/Cards";
 import Modal from "../../components/ModalWindow/Modal";
 import NewMedication from "./NewMedication ";
 import Text from "../../common/Text/Text";
-import { getMedications } from "../../api/Medications";
 import styled from "styled-components";
 
 const Pets = () => {
@@ -30,21 +30,30 @@ const Pets = () => {
     setIsModalOpen(false);
   };
 
+  const handleDelete = (id) => {
+    deleteMedication(id);
+    getMedications();
+    window.location.reload();
+  };
+
   return (
     <div>
       <StyledHeader>
-        <Text level={1}>Pet List</Text>
+        <Text level={1}>Medications List</Text>
         <Button $danger onClick={handleModalOpen}>
           Add Medication
         </Button>
       </StyledHeader>
       <StyledCardsContainer>
         {medicationsData ? (
-          medicationsData.map((medications) => (
-            <StyledCard key={medications.id}>
-              <Text level={3}>{medications.name}</Text>
-              <Text level={3}>{medications.description}</Text>
-              <Text level={3}>{medications.date}</Text>
+          medicationsData.map((medication) => (
+            <StyledCard key={medication.id}>
+              <Text level={3}>{medication.name}</Text>
+              <Text level={3}>{medication.description}</Text>
+              <Text level={3}>{medication.date}</Text>
+              <Button $danger onClick={() => handleDelete(medication.id)}>
+                DELETE
+              </Button>
             </StyledCard>
           ))
         ) : (
