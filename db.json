@@ -1,0 +1,42 @@
+{
+  "Pets": [
+    {
+      "id": 1,
+      "name": "Rex",
+      "birthDate": "2022-10-01",
+      "email": "e.rudzikiene@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Spot",
+      "birthDate": "2022-03-01",
+      "email": "e.rudzikiene@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Sylvester",
+      "birthDate": "2022-03-10",
+      "email": "e.rudzikiene@gmail.com"
+    },
+    {
+      "id": "4781",
+      "name": "Garfis",
+      "birthDate": "2024-04-03",
+      "email": "e.rudzikiene@gmail.com"
+    }
+  ],
+  "Medications": [
+    {
+      "id": 1,
+      "name": "Hubericum celiulitus",
+      "description": "description",
+      "date": "2022-10-01"
+    },
+    {
+      "id": 2,
+      "name": "Tik vaccine",
+      "description": "description",
+      "date": "2022-10-01"
+    }
+  ]
+}
