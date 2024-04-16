@@ -1,42 +1,66 @@
 {
   "Pets": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Rex",
       "birthDate": "2022-10-01",
       "email": "e.rudzikiene@gmail.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Spot",
       "birthDate": "2022-03-01",
       "email": "e.rudzikiene@gmail.com"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Sylvester",
       "birthDate": "2022-03-10",
       "email": "e.rudzikiene@gmail.com"
     },
     {
-      "id": "4781",
+      "id": "aa1f",
       "name": "Garfis",
-      "birthDate": "2024-04-03",
+      "birthDate": "2024-04-04",
       "email": "e.rudzikiene@gmail.com"
     }
   ],
   "Medications": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Hubericum celiulitus",
       "description": "description",
       "date": "2022-10-01"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Tik vaccine",
       "description": "description",
       "date": "2022-10-01"
+    },
+    {
+      "id": "ab06",
+      "name": "Pfizer",
+      "description": "Vakcina",
+      "date": "2024-04-17"
+    },
+    {
+      "id": "a5c8",
+      "name": "Jonson",
+      "description": "Vakcina",
+      "date": "2024-01-12"
+    },
+    {
+      "id": "efd7",
+      "name": "Skiepas",
+      "description": "Kazkoks",
+      "date": "2024-04-11"
+    },
+    {
+      "id": "f28b",
+      "name": "dar kazkas",
+      "description": "dar kazkas",
+      "date": "2024-04-11"
     }
   ]
 }

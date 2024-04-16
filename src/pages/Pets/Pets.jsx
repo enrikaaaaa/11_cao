@@ -1,3 +1,4 @@
+import { deletePet, getPets } from "../../api/Pets";
 import { useEffect, useState } from "react";
 
 import Button from "../../common/Buttons/Button";
@@ -5,7 +6,6 @@ import Cards from "../../components/Cards/Cards";
 import Modal from "../../components/ModalWindow/Modal";
 import NewPet from "../../pages/Pets/NewPet";
 import Text from "../../common/Text/Text";
-import { getPets } from "../../api/Pets";
 import styled from "styled-components";
 
 const Pets = () => {
@@ -29,6 +29,11 @@ const Pets = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+  const handleDelete = (id) => {
+    deletePet(id);
+    getPets();
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -45,6 +50,9 @@ const Pets = () => {
               <Text level={3}>{pet.name}</Text>
               <Text level={3}>{pet.birthDate}</Text>
               <Text level={3}>{pet.email}</Text>
+              <Button $danger onClick={() => handleDelete(pet.id)}>
+                Delete
+              </Button>
             </StyledCard>
           ))
         ) : (

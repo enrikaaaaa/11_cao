@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 
 import Button from "../../common/Buttons/Button";
 import Cards from "../../components/Cards/Cards";
+import Modal from "../../components/ModalWindow/Modal";
+import NewMedication from "./NewMedication ";
 import Text from "../../common/Text/Text";
 import { getMedications } from "../../api/Medications";
 import styled from "styled-components";
 
 const Pets = () => {
   const [medicationsData, setMedicationsData] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getMedications()
@@ -19,11 +22,21 @@ const Pets = () => {
       });
   }, []);
 
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
       <StyledHeader>
         <Text level={1}>Pet List</Text>
-        <Button $danger>Add Pet</Button>
+        <Button $danger onClick={handleModalOpen}>
+          Add Medication
+        </Button>
       </StyledHeader>
       <StyledCardsContainer>
         {medicationsData ? (
@@ -38,6 +51,9 @@ const Pets = () => {
           <Text>Loading...</Text>
         )}
       </StyledCardsContainer>
+      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
+        <NewMedication onClose={handleModalClose} />
+      </Modal>
     </div>
   );
 };
