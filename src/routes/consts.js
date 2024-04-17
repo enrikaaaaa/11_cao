@@ -9,6 +9,7 @@ export const ROUTES = {
   PETS: "/pets",
   MEDICATIONS: "/medications",
   PET_DETAILS: "/pets/:id",
+  ADD_PRESCRIPTION: "/pets/:id/Prescriptions",
 };
 
 export const routes = [
@@ -29,6 +30,11 @@ export const routes = [
   },
   {
     path: ROUTES.PET_DETAILS,
+    Component: PetInformation,
+    Layout: BasicLayout,
+  },
+  {
+    path: ROUTES.ADD_PRESCRIPTION,
     Component: PetInformation,
     Layout: BasicLayout,
   },

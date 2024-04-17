@@ -1,12 +1,6 @@
 {
   "Pets": [
     {
-      "id": "1",
-      "name": "Rex",
-      "birthDate": "2022-10-01",
-      "email": "e.rudzikiene@gmail.com"
-    },
-    {
       "id": "2",
       "name": "Spot",
       "birthDate": "2022-03-01",

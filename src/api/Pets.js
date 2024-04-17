@@ -21,3 +21,8 @@ export const updatePet = async (id, data) => {
   const response = await axios.put(`${API}/Pets/${id}`, data);
   return await response.data;
 };
+
+export const addPrescriptionToPet = async (id, data) => {
+  const response = await axios.post(`${API}/Pets/${id}/Prescriptions`, data);
+  return await response.data;
+};

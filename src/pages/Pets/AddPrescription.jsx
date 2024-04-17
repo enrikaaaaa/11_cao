@@ -1,68 +1,88 @@
-import Button from "../../common/Buttons/Button";
+import { useEffect, useState } from "react";
+
 import PropTypes from "prop-types";
-import Text from "../../common/Text/Text";
-import styled from "styled-components";
-import { useState } from "react";
+import { getMedications } from "../../api/Medications";
+import { postPrescription } from "../../api/Prescriptions";
 
-const AddPrescription = ({ onClose }) => {
-  const [medicineName, setMedicineName] = useState("");
-  const [dosage, setDosage] = useState("");
-  const [frequency, setFrequency] = useState("");
+const AddPrescription = ({ petId, onClose }) => {
+  const [prescriptionData, setPrescriptionData] = useState({
+    medication: "",
+    dosage: "",
+  });
   const [error, setError] = useState("");
+  const [medications, setMedications] = useState([]);
 
-  const handleSubmit = () => {
-    if (medicineName === "" || dosage === "" || frequency === "") {
-      setError("Please fill in all fields");
+  useEffect(() => {
+    getMedications()
+      .then((response) => {
+        setMedications(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPrescriptionData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!prescriptionData.medication || !prescriptionData.dosage) {
+      setError("Please fill in all fields.");
       return;
     }
-
-    onClose();
+    try {
+      await postPrescription({ ...prescriptionData, petId });
+      setPrescriptionData({ medication: "", dosage: "" });
+      window.location.reload();
+      onClose();
+    } catch (error) {
+      console.error("Error adding prescription:", error);
+    }
   };
 
   return (
-    <ModalContent>
-      <Text level={2}>Add Prescription</Text>
-      <StyledForm>
-        <label>Medicine Name:</label>
-        <input
-          type="text"
-          value={medicineName}
-          onChange={(e) => setMedicineName(e.target.value)}
-        />
-        <label>Dosage:</label>
-        <input
-          type="text"
-          value={dosage}
-          onChange={(e) => setDosage(e.target.value)}
-        />
-        <label>Frequency:</label>
-        <input
-          type="text"
-          value={frequency}
-          onChange={(e) => setFrequency(e.target.value)}
-        />
-        <ErrorText>{error}</ErrorText>
-        <Button onClick={handleSubmit}>Add Prescription</Button>
-      </StyledForm>
-    </ModalContent>
+    <div>
+      <h2>Add Prescription</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>Medication:</label>
+        <select
+          name="medication"
+          value={prescriptionData.medication}
+          onChange={handleChange}
+        >
+          <option value="">Select Medication</option>
+          {medications.map((medication) => (
+            <option key={medication.id} value={medication.name}>
+              {medication.name}
+            </option>
+          ))}
+        </select>
+        <br />
+        <label>
+          Dosage:
+          <input
+            type="text"
+            name="dosage"
+            value={prescriptionData.dosage}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <button type="submit">Add Prescription</button>
+      </form>
+    </div>
   );
 };
 
-const ModalContent = styled.div`
-  padding: 20px;
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const ErrorText = styled.span`
-  color: red;
-`;
-
 AddPrescription.propTypes = {
+  petId: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
