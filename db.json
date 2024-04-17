@@ -50,5 +50,25 @@
       "description": "Kazkoks",
       "date": "2024-04-11"
     }
+  ],
+  "Prescriptions": [
+    {
+      "id": "a4d7",
+      "medication": "Jonson",
+      "dosage": "1 time",
+      "petId": "3"
+    },
+    {
+      "id": "f412",
+      "medication": "Tik vaccine",
+      "dosage": "one time",
+      "petId": "3"
+    },
+    {
+      "id": "2b13",
+      "medication": "Hubericum celiulitus",
+      "dosage": "1 time per day",
+      "petId": "3"
+    }
   ]
 }
