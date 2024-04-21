@@ -5,9 +5,10 @@ const StyledFooter = styled.footer`
   color: black;
   text-align: center;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 80%;
+  z-index: 1000;
 `;
 
 const Footer = () => {

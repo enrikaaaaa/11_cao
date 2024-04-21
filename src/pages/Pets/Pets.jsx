@@ -83,10 +83,10 @@ const StyledHeader = styled.div`
 
 const StyledCardsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 40px;
   padding: 10px;
 `;
 
@@ -95,6 +95,7 @@ const StyledCard = styled(Cards)`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  justify-content: space-around;
 `;
 
 export default Pets;

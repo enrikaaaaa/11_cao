@@ -3,14 +3,15 @@ import styled, { css } from "styled-components";
 const Button = styled.button`
   background-color: white;
   color: orange;
-  border: none;
+  border: 1px solid orange;
   cursor: pointer;
   transition: 300ms;
-  border-radius: 10px;
-  width: 100px;
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
   &:hover {
-    background: white;
-    color: orange;
+    background: orange;
+    color: white;
   }
   ${(props) =>
     props.$danger &&
@@ -18,6 +19,10 @@ const Button = styled.button`
       background-color: orange;
       color: white;
       border: 1px solid orange;
+      &:hover {
+        background: white;
+        color: orange;
+      }
     `}
 `;
 

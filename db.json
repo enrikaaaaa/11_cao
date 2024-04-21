@@ -53,22 +53,46 @@
   ],
   "Prescriptions": [
     {
-      "id": "a4d7",
-      "medication": "Jonson",
-      "dosage": "1 time",
-      "petId": "3"
+      "id": "fce7",
+      "medication": "Pfizer",
+      "dosage": "1",
+      "dosageUnit": "pill",
+      "petId": "aa1f"
     },
     {
-      "id": "f412",
-      "medication": "Tik vaccine",
-      "dosage": "one time",
-      "petId": "3"
-    },
-    {
-      "id": "2b13",
+      "id": "981f",
       "medication": "Hubericum celiulitus",
-      "dosage": "1 time per day",
-      "petId": "3"
+      "dosage": "1",
+      "dosageUnit": "ml",
+      "petId": "aa1f"
+    },
+    {
+      "id": "e4f3",
+      "medication": "Pfizer",
+      "dosage": "1",
+      "dosageUnit": "pill",
+      "petId": "aa1f"
+    },
+    {
+      "id": "3236",
+      "medication": "Tik vaccine",
+      "dosage": "1",
+      "dosageUnit": "mg",
+      "petId": "aa1f"
+    },
+    {
+      "id": "9ee4",
+      "medication": "Tik vaccine",
+      "dosage": "3",
+      "dosageUnit": "ml",
+      "petId": "aa1f"
+    },
+    {
+      "id": "7585",
+      "medication": "Jonson",
+      "dosage": "3",
+      "dosageUnit": "mg",
+      "petId": "aa1f"
     }
   ]
 }

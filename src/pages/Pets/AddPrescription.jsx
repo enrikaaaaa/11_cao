@@ -8,6 +8,7 @@ const AddPrescription = ({ petId, onClose }) => {
   const [prescriptionData, setPrescriptionData] = useState({
     medication: "",
     dosage: "",
+    dosageUnit: "",
   });
   const [error, setError] = useState("");
   const [medications, setMedications] = useState([]);
@@ -24,6 +25,9 @@ const AddPrescription = ({ petId, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "dosage" && !/^\d*$/.test(value)) {
+      return;
+    }
     setPrescriptionData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -32,13 +36,17 @@ const AddPrescription = ({ petId, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!prescriptionData.medication || !prescriptionData.dosage) {
+    if (
+      !prescriptionData.medication ||
+      !prescriptionData.dosage ||
+      !prescriptionData.dosageUnit
+    ) {
       setError("Please fill in all fields.");
       return;
     }
     try {
       await postPrescription({ ...prescriptionData, petId });
-      setPrescriptionData({ medication: "", dosage: "" });
+      setPrescriptionData({ medication: "", dosage: "", dosageUnit: "" });
       window.location.reload();
       onClose();
     } catch (error) {
@@ -65,15 +73,24 @@ const AddPrescription = ({ petId, onClose }) => {
           ))}
         </select>
         <br />
-        <label>
-          Dosage:
-          <input
-            type="text"
-            name="dosage"
-            value={prescriptionData.dosage}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Dosage:</label>
+        <input
+          type="text"
+          name="dosage"
+          value={prescriptionData.dosage}
+          onChange={handleChange}
+          placeholder="Enter Dosage"
+        />
+        <select
+          name="dosageUnit"
+          value={prescriptionData.dosageUnit}
+          onChange={handleChange}
+        >
+          <option value="">Select Dosage Unit</option>
+          <option value="pill">Pill(s)</option>
+          <option value="ml">mL</option>
+          <option value="mg">mg</option>
+        </select>
         <br />
         <button type="submit">Add Prescription</button>
       </form>

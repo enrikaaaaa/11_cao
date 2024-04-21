@@ -92,7 +92,7 @@ const PetInformation = () => {
       </StyledButtonsContainer>
 
       {petData && (
-        <Cards>
+        <Cards $werysmall>
           <Text level={3}>Name: {petData.name}</Text>
         </Cards>
       )}
@@ -106,9 +106,10 @@ const PetInformation = () => {
             <ul>
               {prescriptions.map((prescription) => (
                 <li key={prescription.id}>
-                  <Cards>
+                  <Cards $small>
                     <Text>Medication: {prescription.medication}</Text>
                     <Text>Dosage: {prescription.dosage}</Text>
+                    <Text>Dosage Unit: {prescription.dosageUnit}</Text>
                   </Cards>
                 </li>
               ))}

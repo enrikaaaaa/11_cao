@@ -101,6 +101,8 @@ section {
 }
 body {
   line-height: 1;
+  width: 80vw;
+  margin: 0 auto;
 }
 ol,
 ul {
